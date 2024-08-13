@@ -5,7 +5,6 @@
 # en tratar de adivinar un número en la menor cantidad de jugada_usuarios posible.
 # ----------------------------------------------------------------------------------------
 # Autor: Victor Hernandez Lopez ,Juan Suarez Padilla, Johan Sánchez Sánchez
-
 # Version: 1.0
 # [12.08.2024]
 # ----------------------------------------------------------------------------------------
