@@ -2,7 +2,7 @@
 # PROGRAMA: Picas y fijas
 # ----------------------------------------------------------------------------------------
 # Descripción: Un juego muy conocido para pasar el tiempo es “picas y fijas”, el cual consiste 
-# en tratar de adivinar un número en la menor cantidad de intentos posible.
+# en tratar de adivinar un número en la menor cantidad de jugada_usuarios posible.
 # ----------------------------------------------------------------------------------------
 # Autor: Victor Hernandez Lopez ,Juan Suarez Padilla, Johan Sánchez Sánchez
 
@@ -22,24 +22,59 @@ import random   # modulo de python para generar valores random
 # ----------------------------------------------------------------------------------------
 # POS-CONDICIONES
 # ----------------------------------------------------------------------------------------
-# Numero de intentos
+# Numero de jugada_usuarios
 
 import random
 
 def generar_numero_secreto():
+    """
+    Genera un número secreto de 4 dígitos no repetidos.
+
+    Returns:
+        list: Lista de 4 dígitos únicos.
+    """
     digitos = list(range(10))  # Dígitos del 0 al 9
     numero_secreto = random.sample(digitos, 4)
     return numero_secreto
+
+
 def calcular_picas(numero_secreto, jugada_usuario):
-    picas = sum(1 for d1, d2 in zip(numero_secreto, jugada_usuario) if d1 == d2)
+    """
+    Cuenta el número de picas (dígitos correctos en posición incorrecta).
+
+    Parametros:
+        numero_secreto (list): Lista de 4 dígitos del número secreto.
+        jugada_usuario (list): Lista de 4 dígitos del jugada_usuario del jugador.
+
+    Returns:
+        int: Número de picas.
+    """
+    picas = 0
+    for i in range(4):
+        if jugada_usuario[i] in numero_secreto and jugada_usuario[i] != numero_secreto[i]:
+            picas += 1
     return picas
+
 def calcular_fijas(numero_secreto, jugada_usuario):
-    fijas = sum(1 for d1, d2 in zip(numero_secreto, jugada_usuario) if d1 == d2)
+    """
+    Cuenta el número de fijas (dígitos correctos en posición correcta).
+
+    Parametros:
+        numero_secreto (list): Lista de 4 dígitos del número secreto.
+        jugada_usuario (list): Lista de 4 dígitos del jugada_usuario del jugador.
+
+    Returns:
+        int: Número de fijas.
+    """
+    fijas = 0
+    for i in range(4):
+        if jugada_usuario[i] == numero_secreto[i]:
+            fijas += 1
     return fijas
 
 
 numero_secreto = generar_numero_secreto()
-intentos = 0
+jugada_usuarios = 0
 
 while True:
 
@@ -53,8 +88,8 @@ while True:
     print(f"Picas: {picas}, Fijas: {fijas}")
 
     if fijas == 4:
-        print(f"¡Felicidades! Adivinaste el número secreto en {intentos} intentos.")
+        print(f"¡Felicidades! Adivinaste el número secreto en {jugada_usuarios} jugada_usuarios.")
         break
 
-    intentos += 1
+    jugada_usuarios += 1
 
