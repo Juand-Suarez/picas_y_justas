@@ -73,6 +73,10 @@ def calcular_fijas(numero_secreto, jugada_usuario):
     return fijas
 
 
+print("*** Programa para el Juego de Picas y Fijas ***\n")
+print("Debes adivinar un número de 4 dígitos no repetidos.\n")
+
+
 numero_secreto = generar_numero_secreto()
 jugada_usuarios = 0
 
@@ -92,4 +96,8 @@ while True:
         break
 
     jugada_usuarios += 1
+
+# ----------------------------------------------------------------------------------------
+# end.
+# ----------------------------------------------------------------------------------------
 
