@@ -23,19 +23,22 @@ import random   # modulo de python para generar valores random
 # ----------------------------------------------------------------------------------------
 # Numero de jugada_usuarios
 
-import random
-
 def generar_numero_secreto():
     """
-    Genera un número secreto de 4 dígitos no repetidos.
+    Genera un número secreto de 4 dígitos no repetidos, sin ceros al inicio.
 
     Returns:
-        list: Lista de 4 dígitos únicos.
+    list: Lista de 4 dígitos únicos.
     """
-    digitos = list(range(10))  # Dígitos del 0 al 9
-    numero_secreto = random.sample(digitos, 4)
-    return numero_secreto
 
+    # Eliminamos el 0 de la lista de posibles dígitos para el primer lugar
+    digitos = list(range(1, 10)) + [0]
+
+    # Seleccionamos los primeros 4 dígitos, asegurando que el primero no sea 0
+    numero_secreto = random.sample(digitos, 4)
+    numero_secreto[0], numero_secreto[3] = numero_secreto[3], numero_secreto[0]  # Intercambiamos el primer y último dígito
+
+    return numero_secreto
 
 def calcular_picas(numero_secreto, jugada_usuario):
     """
